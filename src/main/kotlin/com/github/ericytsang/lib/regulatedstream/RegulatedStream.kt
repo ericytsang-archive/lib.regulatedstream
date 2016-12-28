@@ -1,4 +1,4 @@
-package com.ericytsang.github.lib.regulatedstream
+package com.github.ericytsang.lib.regulatedstream
 
 import com.github.ericytsang.lib.abstractstream.AbstractOutputStream
 import java.io.OutputStream
