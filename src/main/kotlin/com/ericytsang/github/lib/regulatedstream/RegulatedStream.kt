@@ -23,7 +23,12 @@ class RegulatedOutputStream(val stream:OutputStream):AbstractOutputStream()
         permits.put(numBytes)
     }
 
-    override fun doClose() = stream.close()
+    override fun doClose()
+    {
+        stream.close()
+        doNothing()
+    }
+
     override fun flush() = stream.flush()
 
     override fun doWrite(b:ByteArray,off:Int,len:Int)
