@@ -2,14 +2,15 @@ package com.github.ericytsang.lib.regulatedstream
 
 import com.github.ericytsang.lib.abstractstream.AbstractOutputStream
 import java.io.OutputStream
+import java.util.concurrent.locks.Condition
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
 
 class RegulatedOutputStream(val stream:OutputStream):AbstractOutputStream()
 {
-    private val permitsMutex = ReentrantLock()
+    val permitsMutex = ReentrantLock()
 
-    private val permitsChanged = permitsMutex.newCondition()
+    val permitsChanged:Condition = permitsMutex.newCondition()
 
     var permits = 0
         private set(value)
