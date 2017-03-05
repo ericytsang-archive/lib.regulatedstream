@@ -37,11 +37,7 @@ class RegulatedOutputStream(val stream:OutputStream):AbstractOutputStream()
         permits += numBytes
     }
 
-    override fun doClose()
-    {
-        stream.close()
-        doNothing()
-    }
+    override fun oneShotClose() = stream.close()
 
     override fun flush() = stream.flush()
 
